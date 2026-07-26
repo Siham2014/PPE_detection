@@ -1,4 +1,21 @@
-venv/
+# Python
 __pycache__/
 *.pyc
-.env
+*.pyo
+*.pyd
+
+# Environnements
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+
+# Données de reconnaissance faciale
+dataset/
+
+# Fichiers temporaires
+*.log
+.DS_Store
+Thumbs.db

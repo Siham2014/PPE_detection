@@ -6,7 +6,7 @@ from deepface import DeepFace
 DATASET_PATH = "dataset"
 
 # =========================
-# 1. CHARGER DATASET (UNE FOIS)
+# 1. CHARGER DATASET PERSONNES
 # =========================
 known_embeddings = {}
 
@@ -32,7 +32,7 @@ for person in os.listdir(DATASET_PATH):
 print("Dataset chargé ✔")
 
 # =========================
-# 2. FONCTION DISTANCE
+# 2. DISTANCE
 # =========================
 def cosine_distance(a, b):
     a = np.array(a)
@@ -52,7 +52,6 @@ while True:
 
     frame_count += 1
 
-    # 🔥 rendre plus rapide (skip frames)
     if frame_count % 2 != 0:
         continue
 
@@ -92,13 +91,22 @@ while True:
 
         color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
 
+        label = name
+
         cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
-        cv2.putText(frame, name, (x, y-10),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+        cv2.putText(
+            frame,
+            label,
+            (x, y-10),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.7,
+            color,
+            2
+        )
 
-    cv2.imshow("Face Recognition FAST", frame)
+    cv2.imshow("FaceSense - Face Recognition", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
 cap.release()
