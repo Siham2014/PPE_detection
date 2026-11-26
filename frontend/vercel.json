@@ -1,0 +1,15 @@
+{
+  "framework": "vite",
+  "buildCommand": "tsc -b && vite build --config vite.vercel.config.ts",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "connect-src 'self'"
+        }
+      ]
+    }
+  ]
+}
